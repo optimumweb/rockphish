@@ -9,5 +9,10 @@
         "axios": "^1.1.2",
         "laravel-vite-plugin": "^0.7.5",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "aos": "^2.3.4",
+        "bulma": "^0.9.4",
+        "sass": "^1.63.3"
     }
 }

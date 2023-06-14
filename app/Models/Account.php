@@ -2,37 +2,23 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
-use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Account extends Model
 {
-    use HasApiTokens,
-        HasFactory,
-        Notifiable,
+    use HasFactory,
         SoftDeletes;
 
     protected $fillable = [
         'name',
-        'email',
-        'password',
-    ];
-
-    protected $hidden = [
-        'password',
-        'remember_token',
     ];
 
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-        'is_account_admin' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
@@ -42,8 +28,8 @@ class User extends Authenticatable
     {
         parent::boot();
 
-        static::creating(function (self $user) {
-            $user->uuid = Str::uuid();
+        static::creating(function (self $account) {
+            $account->uuid = Str::uuid();
         });
     }
 
@@ -57,8 +43,13 @@ class User extends Authenticatable
         return 'uuid';
     }
 
-    public function account(): BelongsTo
+    public function users(): HasMany
     {
-        return $this->belongsTo(Account::class);
+        return $this->hasMany(User::class);
+    }
+
+    public function campaigns(): HasMany
+    {
+        return $this->hasMany(Campaign::class);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhishController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::name('phish.')->group(function () {
+    Route::get('/open/{email}', [PhishController::class, 'opened'])->name('opened');
+    Route::get('/hook/{email}', [PhishController::class, 'hooked'])->name('hooked');
 });

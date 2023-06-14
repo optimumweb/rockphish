@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('emails', function (Blueprint $table) {
             $table->id();
             $table->uuid();
-            $table->integer('account_id')->unsigned()->index();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->integer('campaign_id')->unsigned()->index();
+            $table->string('target')->index();
             $table->timestamps();
+            $table->timestamp('sent_at')->nullable();
+            $table->timestamp('opened_at')->nullable()->index();
+            $table->timestamp('hooked_at')->nullable()->index();
             $table->softDeletes();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('emails');
     }
 };
