@@ -1,23 +1,19 @@
 <x-layout
-    :metaTitle="$email->campaign->hooked_title ?? 'Hooked!'"
-    htmlClass="hooked"
+    :metaTitle="$email->campaign->hooked_title"
 >
-    <div class="container">
-        <div class="columns is-centered">
-            <div class="column is-5 has-text-centered">
-                <img
-                    src="{{ asset('images/hooked.png') }}"
-                    width="500"
-                    height="500"
-                    alt=""
-                    data-aos="fade-down"
-                    data-aos-duration="1000"
-                />
+    <section class="section pt-0 is-inverted">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-5 has-text-centered">
+                    <img
+                        src="{{ asset('images/hooked.png') }}"
+                        width="500"
+                        height="500"
+                        alt=""
+                        data-aos="fade-down"
+                        data-aos-duration="1000"
+                    />
 
-                <div
-                    data-aos="fade-up"
-                    data-aos-duration="1000"
-                >
                     @isset($email->campaign->hooked_title)
                         <h1 class="title is-1">
                             {{ $email->campaign->hooked_title }}
@@ -32,5 +28,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <footer class="section">
+        <div class="content is-size-7 has-text-centered">
+            <a href="{{ route('home') }}">
+                {{ __("This phishing awareness campaign is powered by Rockphish") }}
+            </a>
+        </div>
+    </footer>
 </x-layout>

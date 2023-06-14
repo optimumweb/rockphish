@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
 
 Route::name('phish.')->group(function () {
     Route::get('/open/{email}', [PhishController::class, 'opened'])->name('opened');
