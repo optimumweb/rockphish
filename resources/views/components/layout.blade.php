@@ -1,7 +1,7 @@
 @props([
-    'htmlClass' => null,
-    'metaTitle' => null,
+    'metaTitle' => config('app.name'),
     'metaDescription' => null,
+    'htmlClass' => null,
 ])
 
 <!DOCTYPE html>

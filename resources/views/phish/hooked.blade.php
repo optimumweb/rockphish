@@ -1,6 +1,6 @@
 <x-layout
-    htmlClass="hooked"
     :metaTitle="$email->campaign->hooked_title ?? 'Hooked!'"
+    htmlClass="hooked"
 >
     <div class="container">
         <div class="columns is-centered">
