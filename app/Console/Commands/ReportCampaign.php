@@ -58,21 +58,23 @@ class ReportCampaign extends Command
         $openedCount = $opened->count();
         $unopenedCount = $unopened->count();
 
+        $this->line(str_repeat('-', 30));
         $this->line("Hooked ({$hookedCount})");
+        $this->line(str_repeat('-', 30));
         foreach ($hooked as $target) {
             $this->line($target);
         }
 
-        $this->line(str_repeat('-', 20));
-
+        $this->line(str_repeat('-', 30));
         $this->line("Opened ({$openedCount})");
+        $this->line(str_repeat('-', 30));
         foreach ($opened as $target) {
             $this->line($target);
         }
 
-        $this->line(str_repeat('-', 20));
-
+        $this->line(str_repeat('-', 30));
         $this->line("Unopened ({$unopenedCount})");
+        $this->line(str_repeat('-', 30));
         foreach ($unopened as $target) {
             $this->line($target);
         }
