@@ -16,17 +16,17 @@ class CampaignEmail extends Mailable
 
     public $email;
     public $campaign;
-    public $opened;
-    public $hooked;
+    public $openedPath;
+    public $hookedPath;
     public $body;
 
     public function __construct(Email $email)
     {
         $this->email = $email;
         $this->campaign = $email->campaign;
-        $this->opened = route('phish.opened', [$email]);
-        $this->hooked = route('phish.hooked', [$email]);
-        $this->body = str_replace('%hook%', $this->hooked, $this->campaign->body);
+        $this->openedPath = route('phish.opened', ['email' => $email, 'domain' => $this->campaign->domain]);
+        $this->hookedPath = route('phish.hooked', ['email' => $email, 'domain' => $this->campaign->domain]);
+        $this->body = str_replace('%hook%', $this->hookedPath, $this->campaign->body);
     }
 
     public function envelope(): Envelope
@@ -43,8 +43,8 @@ class CampaignEmail extends Mailable
         return new Content(
             view: 'mail.campaign-email',
             with: [
-                'opened' => $this->opened,
-                'hooked' => $this->hooked,
+                'opened' => $this->openedPath,
+                'hooked' => $this->hookedPath,
                 'body' => $this->body,
             ],
         );
