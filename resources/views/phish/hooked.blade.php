@@ -32,7 +32,7 @@
 
     <footer class="section">
         <div class="content is-size-7 has-text-centered">
-            <a href="{{ route('home') }}">
+            <a href="{{ config('app.url') }}">
                 {{ __("This phishing awareness campaign is powered by Rockphish") }}
             </a>
         </div>

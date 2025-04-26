@@ -7,16 +7,18 @@
                 <div class="column is-5 has-text-centered">
                     <hgroup class="block">
                         <h1 class="title is-1">
-                            <img
-                                src="{{ asset('images/logo.png') }}"
-                                width="300"
-                                height="300"
-                                alt=""
-                            />
+                            <a href="{{ config('app.url') }}">
+                                <img
+                                    src="{{ asset('images/logo.png') }}"
+                                    width="300"
+                                    height="300"
+                                    alt=""
+                                />
 
-                            <br />
+                                <br />
 
-                            {{ config('app.name') }}
+                                {{ config('app.name') }}
+                            </a>
                         </h1>
 
                         <h2>
