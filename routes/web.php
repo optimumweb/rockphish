@@ -18,10 +18,12 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-$phishRoutes = function () {
+Route::domain('{domain}')->name('phish.')->group(function () {
     Route::get('/open/{email}', [PhishController::class, 'opened'])->name('opened');
     Route::get('/hook/{email}', [PhishController::class, 'hooked'])->name('hooked');
-};
+});
 
-Route::domain('{domain}')->name('phish.')->group($phishRoutes);
-Route::name('phish.')->group($phishRoutes);
+Route::prefix('/')->group(function () {
+    Route::get('/open/{email}', [PhishController::class, 'opened']);
+    Route::get('/hook/{email}', [PhishController::class, 'hooked']);
+});
