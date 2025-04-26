@@ -18,6 +18,7 @@ class Campaign extends Model
     protected $fillable = [
         'subject',
         'body',
+        'domain',
         'from_address',
         'from_name',
         'reply_to',
