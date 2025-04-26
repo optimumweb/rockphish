@@ -17,6 +17,8 @@
 
         <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/png" />
 
+        <link rel="canonical" href="{{ rtrim(config('app.url'), '/') . '/' . ltrim(request()->path(), '/') }}" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet" />
